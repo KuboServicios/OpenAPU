@@ -1,71 +1,69 @@
 # OpenAPU
 
-OpenAPU es una aplicación local, gratuita y de código abierto para preparar presupuestos de construcción mediante itemizados y análisis de precios unitarios (APU). Está desarrollada por **Kubo Servicios SpA** como parte del ecosistema [CodeAPU.cl](https://codeapu.cl/).
+OpenAPU es una aplicación local, gratuita y de código abierto para preparar presupuestos de construcción mediante itemizados y análisis de precios unitarios.
+
+## Descargar OpenAPU para Windows
+
+**No uses “Code → Download ZIP” si solo quieres utilizar el programa.** Esa opción descarga el código fuente para desarrolladores.
+
+### [Descargar OpenAPU listo para usar](https://github.com/KuboServicios/OpenAPU/releases/latest/download/OpenAPU-Windows.zip)
+
+1. Descarga `OpenAPU-Windows.zip`.
+2. Haz clic derecho y elige **Extraer todo**.
+3. Abre la carpeta extraída y haz doble clic en **INICIAR OPENAPU.cmd**.
+
+El paquete para Windows ya incluye Python y sus componentes. No requiere instalador, comandos ni configuración técnica. Mantén abierta la ventana de inicio mientras utilizas OpenAPU.
+
+> Si la descarga todavía no aparece, abre la sección [Releases](https://github.com/KuboServicios/OpenAPU/releases) y selecciona la versión más reciente.
 
 ## Qué permite hacer
 
 - Importar y normalizar proyectos desde Excel, CSV y BC3.
-- Revisar el proyecto en las vistas Itemizado, APU, Gastos Generales y Cierre Comercial.
-- Crear o ajustar APU directamente en la aplicación.
-- Trabajar con hasta tres proyectos para una empresa identificada.
+- Revisar Itemizado, APU, Gastos Generales y Cierre Comercial.
+- Crear o ajustar análisis de precios unitarios.
+- Trabajar con una empresa y hasta tres proyectos.
 - Exportar Itemizado, APU, Gastos Generales y Cierre Comercial.
-- Conectar Codex mediante un servidor MCP local para consultar y proponer cambios sobre el proyecto.
+- Conectar Codex mediante MCP local bajo autorización del usuario.
 
-Los inspectores avanzados de partidas y recursos son funciones exclusivas de CodeAPU Full. OpenAPU no incorpora logos corporativos personalizados en sus informes.
-
-## Requisitos
-
-- Windows 10 u 11.
-- Python 3.11 o superior disponible como `python` en PowerShell.
-- Conexión a Internet solamente para instalar las dependencias la primera vez. El uso normal y los datos del proyecto permanecen en el equipo.
-
-## Instalación rápida
-
-1. Descarga el repositorio con **Code > Download ZIP** y descomprime el archivo, o clónalo con Git.
-2. Haz clic derecho sobre `Iniciar OpenAPU.ps1` y selecciona **Ejecutar con PowerShell**.
-3. Espera mientras se instalan las dependencias de Python.
-4. Abre `http://127.0.0.1:8767/` si el navegador no se abre automáticamente.
-
-Para una instalación manual:
-
-```powershell
-python -m pip install -r requirements.txt
-python server.py --port 8767
-```
-
-Consulta [INSTALACION.md](INSTALACION.md) para solución de problemas y [MCP_CODEX.md](MCP_CODEX.md) para conectar Codex.
+Los inspectores avanzados de partidas y recursos son funciones de CodeAPU Full. OpenAPU no incorpora logos corporativos personalizados en sus informes.
 
 ## Primer uso
 
-1. Abre OpenAPU y registra el usuario local.
+1. Abre OpenAPU y registra tu usuario local.
 2. Identifica la empresa que utilizará el proyecto.
 3. Crea un proyecto o importa un archivo compatible.
 4. Revisa el itemizado y los APU antes de generar informes.
-5. Usa la opción de respaldo antes de mover la aplicación a otro equipo.
+5. Genera un respaldo antes de mover OpenAPU a otro equipo.
 
-## Privacidad y datos
+## Privacidad
 
-OpenAPU se ejecuta en `127.0.0.1`: no publica la aplicación en Internet. Usuarios, empresas y proyectos se guardan en una base SQLite local llamada `openapu.db`. La carpeta `data/`, las bases de datos y las exportaciones están excluidas del repositorio.
+OpenAPU se ejecuta en `127.0.0.1`. Los usuarios, empresas y proyectos se guardan en una base local dentro de tu computador. La aplicación no publica tus proyectos en Internet.
 
-Si conectas una herramienta externa mediante MCP, solo los datos solicitados por esa herramienta salen del proceso local. No compartas información confidencial que no sea necesaria para la consulta.
+La conexión con Codex es opcional. Solo los datos solicitados mediante las herramientas MCP y autorizados por el usuario salen del proceso local.
 
-## Alcance gratuito
+## Para desarrolladores
 
-OpenAPU admite una empresa y hasta tres proyectos. Al requerir un cuarto proyecto, la aplicación informa las alternativas comerciales de CodeAPU. Esta limitación forma parte del producto gratuito y no cambia la licencia del código fuente.
+El contenido normal del repositorio es el código fuente. Requiere Windows, Python 3.11 o superior y conexión a Internet durante la preparación inicial.
 
-## Desarrollo
+```powershell
+git clone https://github.com/KuboServicios/OpenAPU.git
+cd OpenAPU
+& '.\INICIAR OPENAPU.cmd'
+```
+
+También puedes ejecutar:
 
 ```powershell
 python -m pip install -r requirements.txt
-python -m compileall -q .
 python server.py --port 8767
 ```
 
-Las contribuciones son bienvenidas. Revisa [CONTRIBUTING.md](CONTRIBUTING.md) y [SECURITY.md](SECURITY.md) antes de abrir un issue o pull request.
+Consulta [INSTALACION.md](INSTALACION.md), [MCP_CODEX.md](MCP_CODEX.md), [CONTRIBUTING.md](CONTRIBUTING.md) y [SECURITY.md](SECURITY.md).
 
-## Licencia
+## Alcance y licencia
 
-OpenAPU se distribuye bajo la licencia **GNU Affero General Public License v3.0 o posterior (AGPL-3.0-or-later)**. Consulta [LICENSE](LICENSE).
+OpenAPU admite una empresa y hasta tres proyectos. Al requerir un cuarto proyecto, informa las alternativas de [CodeAPU.cl](https://codeapu.cl/).
+
+Se distribuye bajo la licencia **GNU Affero General Public License v3.0 o posterior (AGPL-3.0-or-later)**. Consulta [LICENSE](LICENSE).
 
 Copyright © 2026 Kubo Servicios SpA.
-

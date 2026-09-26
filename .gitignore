@@ -10,4 +10,5 @@ output/
 *.pid
 .DS_Store
 Thumbs.db
+installer/portable-release/
 

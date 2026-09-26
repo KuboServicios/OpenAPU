@@ -1,0 +1,23 @@
+name: Publicar OpenAPU para Windows
+on:
+  push:
+    tags:
+      - "v*"
+permissions:
+  contents: write
+jobs:
+  windows-portable:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Construir paquete listo para usar
+        shell: pwsh
+        run: ./installer/build_portable_release.ps1 -Version "${{ github.ref_name }}"
+      - name: Publicar descarga
+        uses: softprops/action-gh-release@v2
+        with:
+          files: installer/portable-release/OpenAPU-Windows.zip
+          generate_release_notes: true

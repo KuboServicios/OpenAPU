@@ -1,67 +1,61 @@
-# Instalación y uso de OpenAPU
+# Instalar OpenAPU en Windows
 
-## Instalación en Windows
+## Para utilizar OpenAPU
 
-1. Instala Python 3.11 o superior desde [python.org](https://www.python.org/downloads/windows/).
-2. Durante la instalación marca **Add Python to PATH**.
-3. Descarga OpenAPU y descomprime la carpeta en una ubicación con permisos de escritura.
-4. Ejecuta `Iniciar OpenAPU.ps1` con PowerShell.
-5. Mantén abierta la ventana de PowerShell mientras utilizas la aplicación.
+Descarga siempre el paquete preparado desde:
 
-El iniciador instala automáticamente las dependencias declaradas en `requirements.txt` y levanta el servidor local en `http://127.0.0.1:8767/`.
+**[OpenAPU-Windows.zip](https://github.com/KuboServicios/OpenAPU/releases/latest/download/OpenAPU-Windows.zip)**
 
-## Si PowerShell bloquea el iniciador
+1. Al terminar la descarga, haz clic derecho sobre `OpenAPU-Windows.zip`.
+2. Selecciona **Extraer todo**.
+3. Abre la carpeta extraída.
+4. Haz doble clic en `INICIAR OPENAPU.cmd`.
+5. Mantén abierta la ventana de inicio mientras trabajas.
 
-Abre PowerShell dentro de la carpeta de OpenAPU y ejecuta:
+No necesitas instalar Python, ejecutar comandos ni abrir la carpeta `Aplicacion`.
 
-```powershell
-powershell -ExecutionPolicy Bypass -File ".\Iniciar OpenAPU.ps1"
-```
+## Detener OpenAPU
 
-Esta opción solo omite la política para esa ejecución; no cambia permanentemente la configuración del equipo.
+Cierra la ventana negra de inicio. Los proyectos permanecen guardados localmente.
 
-## Inicio manual
+## Actualizar
+
+1. Genera un respaldo desde OpenAPU.
+2. Descarga la versión más reciente.
+3. Extrae el nuevo paquete en otra carpeta.
+4. Abre la versión nueva y restaura el respaldo si corresponde.
+
+No reemplaces archivos dentro de la carpeta `Aplicacion` mientras OpenAPU esté funcionando.
+
+## Problemas habituales
+
+### Aparecen muchos archivos técnicos
+
+Descargaste el código fuente mediante **Code → Download ZIP**. Vuelve a GitHub y descarga `OpenAPU-Windows.zip` desde **Releases**.
+
+### OpenAPU no inicia
+
+Comprueba que extrajiste completamente el ZIP. No ejecutes `INICIAR OPENAPU.cmd` desde la vista de archivos comprimidos.
+
+### El puerto 8767 está ocupado
+
+Cierra otras ventanas de OpenAPU o CodeAPU y vuelve a intentarlo.
+
+### Windows o la empresa impiden abrirlo
+
+No desactives las protecciones del equipo. Solicita revisión al encargado informático e indica que el paquete contiene código Python de fuente abierta y un entorno local integrado.
+
+## Para desarrolladores
+
+El botón **Code → Download ZIP** y `git clone` entregan el código fuente. Esa modalidad requiere Python 3.11 o superior:
 
 ```powershell
 python -m pip install -r requirements.txt
 python server.py --port 8767
 ```
 
-Después abre `http://127.0.0.1:8767/` en el navegador.
+También puedes abrir `INICIAR OPENAPU.cmd`; si detecta una copia de desarrollo, crea `.venv` y prepara las dependencias.
 
-## Detener OpenAPU
+## Privacidad y soporte
 
-Vuelve a la ventana de PowerShell y presiona `Ctrl+C`. Tus proyectos permanecen guardados en la base local.
-
-## Actualizar
-
-Antes de actualizar, genera un respaldo desde OpenAPU. Si clonaste el repositorio, cierra la aplicación, ejecuta `git pull` y vuelve a iniciar. Si descargaste un ZIP, conserva el respaldo y reemplaza los archivos de la aplicación con la nueva versión.
-
-## Problemas habituales
-
-### `python` no se reconoce
-
-Python no está instalado o no se agregó a `PATH`. Reinstálalo marcando **Add Python to PATH** y abre una nueva ventana de PowerShell.
-
-### El puerto 8767 está ocupado
-
-Inicia temporalmente otro puerto:
-
-```powershell
-python server.py --port 8768
-```
-
-Luego abre `http://127.0.0.1:8768/`.
-
-### No abre la página
-
-Confirma que la ventana de PowerShell siga abierta y que muestre el servidor activo. OpenAPU solo escucha conexiones del propio equipo.
-
-### Restaurar información
-
-Utiliza las opciones de respaldo y restauración incluidas en la aplicación. No publiques ni adjuntes `openapu.db` en reportes de errores: puede contener datos de proyectos y usuarios.
-
-## Soporte
-
-Para errores reproducibles, abre un issue en GitHub sin adjuntar información confidencial. Para servicios y CodeAPU Full visita [CodeAPU.cl](https://codeapu.cl/).
-
+OpenAPU solo escucha en `127.0.0.1`. No adjuntes `openapu.db`, respaldos ni antecedentes de proyectos en un issue público. Para reportar un error utiliza GitHub sin incluir información confidencial.
